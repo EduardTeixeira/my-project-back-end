@@ -1,9 +1,12 @@
 pipeline {
-    agent { docker { image 'maven:3.8.4-openjdk-11-slim' } }
+    agent none
     stages {
-        stage('build') {
+        stage('Build') {
+            agent {
+                docker { image 'maven' }
+            }
             steps {
-                sh 'mvn --version'
+                sh "mvn package -Dmaven.test.skip=true"
             }
         }
     }

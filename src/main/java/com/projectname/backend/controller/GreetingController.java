@@ -20,7 +20,7 @@ public class GreetingController {
 	@GetMapping("")
 	public ResponseEntity<?> getAll() {
 
-		return new ResponseEntity<String>("Greeting - GET", HttpStatus.OK);
+		return new ResponseEntity<String>("Greeting - GET ", HttpStatus.OK);
 
 	}
 

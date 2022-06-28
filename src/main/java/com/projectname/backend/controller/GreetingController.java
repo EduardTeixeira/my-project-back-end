@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.projectname.backend.model.Greeting;
+import com.projectname.backend.model.GreetingModel;
 
 @RestController
 @RequestMapping("/api/greeting")
@@ -25,14 +25,14 @@ public class GreetingController {
 	}
 
 	@PostMapping("")
-	public ResponseEntity<?> create(@RequestBody Greeting request) {
+	public ResponseEntity<?> create(@RequestBody GreetingModel request) {
 
 		return new ResponseEntity<String>("Greeting - POST", HttpStatus.OK);
 
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody Greeting request) {
+	public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody GreetingModel request) {
 
 		return new ResponseEntity<String>("Greeting - PUT " + id, HttpStatus.OK);
 

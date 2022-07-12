@@ -1,5 +1,6 @@
-package com.projectname.backend.controller;
+package com.projectname.backend.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -9,30 +10,36 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.projectname.backend.model.GreetingModel;
+import com.projectname.backend.models.GreetingModel;
+import com.projectname.backend.models.User;
+import com.projectname.backend.service.UserService;
 
 @RestController
-@RequestMapping("/api/greeting")
-public class GreetingController {
+@RequestMapping("/api/user")
+public class UserController {
+
+	@Autowired
+	private UserService userService;
 
 	@GetMapping("")
-	public ResponseEntity<?> getAll() {
+	public @ResponseBody Iterable<User> getAll() {
 
-		return new ResponseEntity<String>("Greeting - GET ", HttpStatus.OK);
+		return userService.getAll();
 
 	}
 
 	@PostMapping("")
-	public ResponseEntity<?> create(@RequestBody GreetingModel request) {
+	public @ResponseBody String create(@RequestBody User request) {
 
-		return new ResponseEntity<String>("Greeting - POST", HttpStatus.OK);
+		return userService.create(request);
 
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody GreetingModel request) {
+	public ResponseEntity<?> update(@PathVariable("id") Long id, @RequestBody User request) {
 
 		return new ResponseEntity<String>("Greeting - PUT " + id, HttpStatus.OK);
 

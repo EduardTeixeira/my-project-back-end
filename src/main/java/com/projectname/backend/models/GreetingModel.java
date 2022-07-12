@@ -1,4 +1,4 @@
-package com.projectname.backend.model;
+package com.projectname.backend.models;
 
 public class GreetingModel {
 
